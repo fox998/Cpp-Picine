@@ -10,4 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include	"FragTrap.hpp"
+#include	"ScavTrap.hpp"
 
+int		main()
+{
+	FragTrap	f;
+	ScavTrap	s;
+
+	f.vaulthunter_dot_exe("asdas");
+}

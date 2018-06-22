@@ -13,18 +13,35 @@
 #ifndef	SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-#include	"FragTrap.hpp"
+#include	<string>
 
-class	ScavTrap : public FragTrap
+class	ScavTrap
 {
 	private:
-		void			_outputNameOfClass();
+		std::string		_name;
+		int				_hitPoints;
+		int				_maxHitPoints;
+		int				_energyPoints;
+		int				_maxEnergyPoints;
+		int				_level;
+		int				_meleeAttackDamege;
+		int				_rangedAttackDamege;
+		int				_armorDamageReduction;
 		
 	public:
 		~ScavTrap();
 		ScavTrap();
 		ScavTrap(std::string name);
 		ScavTrap(ScavTrap const & st);
+
+		ScavTrap &		operator=(ScavTrap const & ft);
+
+		void			rangedAttack(std::string const & target);
+		void			meleeAttack(std::string const & target);
+		void			takeDamage(unsigned int amount);
+		void			beRepaired(unsigned int amount);
+
+		void			challengeNewcomer(std::string const & target);
 		
 };
 

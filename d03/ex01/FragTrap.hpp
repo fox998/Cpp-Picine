@@ -17,7 +17,7 @@
 
 class	FragTrap
 {
-	protected:
+	private:
 		std::string		_name;
 		int				_hitPoints;
 		int				_maxHitPoints;
@@ -27,8 +27,6 @@ class	FragTrap
 		int				_meleeAttackDamege;
 		int				_rangedAttackDamege;
 		int				_armorDamageReduction;
-
-		void			_outputNameOfClass();
 
 	public:
 		~FragTrap();
