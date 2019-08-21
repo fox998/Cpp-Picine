@@ -111,8 +111,8 @@ void				FragTrap::vaulthunter_dot_exe(std::string const & target)
 		"Have no fear, mini-trap is here!"
 	};
 
-	std::cout << "FR4G-TP " << this->_name << " vaulthunter_dot_exe";
-	std::cout << " to target " << target << " : ";
+	std::cout << this->_name;
+	std::cout << " attacks " << target << " by vaulthunter_dot_exe : ";
 	if (this->_energyPoints >= 25)
 	{
 		this->_energyPoints -= 25;

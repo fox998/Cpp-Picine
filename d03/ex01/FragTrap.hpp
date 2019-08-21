@@ -28,6 +28,8 @@ class	FragTrap
 		int				_rangedAttackDamege;
 		int				_armorDamageReduction;
 
+		void			_outputNameOfClass();
+
 	public:
 		~FragTrap();
 		FragTrap();
@@ -40,6 +42,7 @@ class	FragTrap
 		void			meleeAttack(std::string const & target);
 		void			takeDamage(unsigned int amount);
 		void			beRepaired(unsigned int amount);
+		
 		void			vaulthunter_dot_exe(std::string const & target);
 };
 

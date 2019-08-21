@@ -16,6 +16,7 @@
 
 FragTrap::~FragTrap()
 {
+	this->_outputNameOfClass();
 	std::cout << "Destructor called" << std::endl;
 }
 
@@ -29,6 +30,7 @@ FragTrap::FragTrap():	_name("-"),
 						_rangedAttackDamege(20),
 						_armorDamageReduction(5)
 {
+	this->_outputNameOfClass();
 	std::cout << "Default constructor called" << std::endl;
 }
 
@@ -42,13 +44,20 @@ FragTrap::FragTrap(std::string const &name):	_name(name),
 												_rangedAttackDamege(20),
 												_armorDamageReduction(5)
 {
+	this->_outputNameOfClass();
 	std::cout << "Name set constructor called" << std::endl;
 }
 
 FragTrap::FragTrap(FragTrap const & copy)
 {
+	this->_outputNameOfClass();
 	std::cout << "Copy constructor called" << std::endl;
 	*this = copy;
+}
+
+void				FragTrap::_outputNameOfClass()
+{
+	std::cout << "FragTrap :";
 }
 
 FragTrap &			FragTrap::operator=(FragTrap const & ft)
@@ -69,7 +78,7 @@ FragTrap &			FragTrap::operator=(FragTrap const & ft)
 
 void				FragTrap::rangedAttack(std::string const & target)
 {
-	std::cout << "FR4G-TP " << this->_name;
+	std::cout << this->_name;
 	std::cout << " attacks " << target;
 	std::cout << " range, causing " << this->_rangedAttackDamege;
 	std::cout << " points of damage !" << std::endl;
@@ -77,7 +86,7 @@ void				FragTrap::rangedAttack(std::string const & target)
 
 void				FragTrap::meleeAttack(std::string const & target)
 {
-	std::cout << "FR4G-TP " << this->_name;
+	std::cout << this->_name;
 	std::cout << " attacks " << target;
 	std::cout << " melee, causing " << this->_rangedAttackDamege;
 	std::cout << " points of damage !" << std::endl;
@@ -85,7 +94,7 @@ void				FragTrap::meleeAttack(std::string const & target)
 
 void				FragTrap::takeDamage(unsigned int amount)
 {
-	std::cout << "FR4G-TP " << this->_name;
+	std::cout << this->_name;
 	std::cout << " : My robotic flesh get" << amount;
 	this->_hitPoints = std::max(this->_hitPoints - (int)amount, 0);
 	std::cout << " points of demage! AAHH! My health : " << this->_hitPoints << std::endl;
@@ -93,7 +102,7 @@ void				FragTrap::takeDamage(unsigned int amount)
 
 void				FragTrap::beRepaired(unsigned int amount)
 {
-	std::cout << "FR4G-TP " << this->_name;
+	std::cout << this->_name;
 	std::cout << " : I found " << amount << " hit points! ";
 	this->_hitPoints = std::min(this->_hitPoints + (int)amount, this->_maxHitPoints);
 	std::cout << "My health : " << this->_hitPoints << std::endl;
@@ -111,8 +120,8 @@ void				FragTrap::vaulthunter_dot_exe(std::string const & target)
 		"Have no fear, mini-trap is here!"
 	};
 
-	std::cout << "FR4G-TP " << this->_name << " vaulthunter_dot_exe";
-	std::cout << " to target " << target << " : ";
+	std::cout << this->_name;
+	std::cout << " attacks " << target << " by vaulthunter_dot_exe : ";
 	if (this->_energyPoints >= 25)
 	{
 		this->_energyPoints -= 25;

@@ -1,24 +1,25 @@
 
-#ifndef     SPAN_HPP
-# define    SPAN_HPP
+#pragma once
+#include <vector>
 
 class       Span
 {
     private:
-        int                 *_arr;
-        unsigned int        _size;
-        int                 _shortestSpan;
-        int                 _longestSpan;
 
-        Span();
+        typedef  std::vector<int> AttT;
+        AttT m_Arr;
+        std::size_t m_MaxSize;
+
+        std::vector<int> GetSpans() const;
+
     public:
-        ~Span();
+        Span() {};
+        ~Span() {};
         Span(unsigned int n);
+
 
         void        addNumber(int val);
 
-        int         shortestSpan();
-        int         longestSpan();
+        int         shortestSpan() const;
+        int         longestSpan() const;
 };
-
-#endif

@@ -2,20 +2,20 @@
 SRC =	main.cpp\
 		FragTrap.cpp
 
-OBJ = $(SRC:.cpp=.o)
+OBJ =	$(SRC:.cpp=.o)
 
-all: $(OBJ)
-	clang++ -Werror -Wextra -Wall $(OBJ)
+NAME =	ex00
 
-%.o : %.cpp
+all: $(NAME)
+
+$(NAME) : $(OBJ)
+	clang++ -Werror -Wextra -Wall -o $(NAME) $(OBJ)
+
+%.o:%.cpp 
 	clang++ -Werror -Wextra -Wall -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f a.out
-
-re: fclean all
-
-
+	rm -f $(NAME)

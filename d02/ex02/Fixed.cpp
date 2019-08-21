@@ -17,6 +17,8 @@
 //                           Constructors & Destructor                        //
 //############################################################################//
 
+
+
 Fixed::~Fixed(void)
 {
 	//std::cout << "Destructor called" << std::endl;
@@ -116,7 +118,7 @@ Fixed				Fixed::operator*(Fixed const &fp)
 {
 	Fixed	f;
 
-	f._fpval = this->_fpval * fp._fpval;
+	f._fpval = (this->toFloat() * fp.toFloat()) * (1 << Fixed::_numOfFractBits);
 	return (f);
 }
 
@@ -124,7 +126,7 @@ Fixed				Fixed::operator/(Fixed const &fp)
 {
 	Fixed	f;
 
-	f._fpval = this->_fpval / fp._fpval;
+	f._fpval = (this->toFloat() / fp.toFloat()) * (1 << Fixed::_numOfFractBits);
 	return (f);
 }
 
@@ -184,25 +186,26 @@ float		Fixed::toFloat(void) const
 	return ( ((float)this->_fpval) / (1 << this->_numOfFractBits));
 }
 
-Fixed const &		max(Fixed const & a, Fixed const & b)
+Fixed const &		Fixed::max(Fixed const & a, Fixed const & b)
 {
 	return (a.getRawBits() > b.getRawBits() ? a : b);
 }
 
-Fixed const &		min(Fixed const & a, Fixed const & b)
+Fixed const &		Fixed::min(Fixed const & a, Fixed const & b)
 {
 	return (a.getRawBits() < b.getRawBits() ? a : b);
 }
 
-Fixed &				max(Fixed & a, Fixed & b)
+Fixed &				Fixed::max(Fixed & a, Fixed & b)
 {
 	return (a > b ? a : b);
 }
 
-Fixed &				min(Fixed & a, Fixed & b)
+Fixed &				Fixed::min(Fixed & a, Fixed & b)
 {
 	return (a < b ? a : b);
 }
+
 
 int main( void ) {
 Fixed a;
@@ -213,6 +216,6 @@ std::cout << a << std::endl;
 std::cout << a++ << std::endl;
 std::cout << a << std::endl;
 std::cout << b << std::endl;
-std::cout << max( a, b ) << std::endl;
+std::cout << Fixed::max( a, b ) << std::endl;
 return 0;
 }

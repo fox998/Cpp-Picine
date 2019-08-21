@@ -51,13 +51,14 @@ class Fixed
 		void		setRawBits( int const raw );
 		float		toFloat( void ) const;
 		int			toInt( void ) const; 
+
+		static Fixed const &		max(Fixed const & a, Fixed const & b);
+		static Fixed &				max(Fixed  & a, Fixed & b);
+		static Fixed const &		min(Fixed const & a, Fixed const & b);
+		static Fixed &				min(Fixed  & a, Fixed & b);
+
 };
 
 std::ostream &		operator<<(std::ostream & o, Fixed const & fp);
-
-Fixed const &		max(Fixed const & a, Fixed const & b);
-Fixed &				max(Fixed  & a, Fixed & b);
-Fixed const &		min(Fixed const & a, Fixed const & b);
-Fixed &				min(Fixed  & a, Fixed & b);
 
 #endif

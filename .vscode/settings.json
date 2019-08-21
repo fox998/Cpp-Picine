@@ -45,6 +45,26 @@
 		"ctime": "cpp",
 		"iomanip": "cpp",
 		"xlocmon": "cpp",
-		"xloctime": "cpp"
+		"xloctime": "cpp",
+		"algorithm": "cpp",
+		"cstdarg": "cpp",
+		"functional": "cpp",
+		"iterator": "cpp",
+		"list": "cpp",
+		"locale": "cpp",
+		"unordered_map": "cpp",
+		"vector": "cpp",
+		"xhash": "cpp",
+		"xlocbuf": "cpp",
+		"xlocmes": "cpp",
+		"execution": "cpp",
+		"atomic": "cpp",
+		"chrono": "cpp",
+		"deque": "cpp",
+		"mutex": "cpp",
+		"numeric": "cpp",
+		"queue": "cpp",
+		"ratio": "cpp",
+		"thread": "cpp"
 	}
 }

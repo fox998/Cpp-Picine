@@ -13,7 +13,7 @@
 #ifndef	SCAVTRAP_HPP
 # define SCAVTRAP_HPP
 
-#include	<string>
+#include <string>
 
 class	ScavTrap
 {
@@ -27,11 +27,13 @@ class	ScavTrap
 		int				_meleeAttackDamege;
 		int				_rangedAttackDamege;
 		int				_armorDamageReduction;
+	
+		void			_outputNameOfClass();
 		
 	public:
 		~ScavTrap();
 		ScavTrap();
-		ScavTrap(std::string name);
+		ScavTrap(std::string const & name);
 		ScavTrap(ScavTrap const & st);
 
 		ScavTrap &		operator=(ScavTrap const & ft);

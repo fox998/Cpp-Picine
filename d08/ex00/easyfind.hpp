@@ -1,19 +1,10 @@
 
-#ifndef     EASYFIND_HPP
-# define    EASYFIND_HPP
+#pragma once
+#include <algorithm>
+#include <iostream>
 
 template<typename T>
-typename T::const_iterator                    easyfind(T const & arr, int num)
+typename T::iterator                    easyfind(T & arr, int num)
 {
-    typename T::const_iterator  it = arr.begin();
-    typename T::const_iterator  end = arr.end();
-    while (it != end)
-    {
-        if (*it == num)
-            break ;
-        it++;
-    }
-    return (it);
+    return std::find(arr.begin(), arr.end(), num);
 }
-
-#endif

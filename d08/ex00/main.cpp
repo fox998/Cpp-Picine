@@ -6,7 +6,7 @@
 
 int     main()
 {
-    std::vector<int>    arr (5);
+    std::vector<float>    arr (5);
     std::list<int>      lst;
 
     arr[0] = 42;
@@ -14,6 +14,7 @@ int     main()
     arr[2] = 44;
     arr[3] = 45;
     arr[4] = 46;
+
 
     lst.push_back(0);
     lst.push_back(10);
