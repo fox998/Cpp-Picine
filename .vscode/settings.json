@@ -65,6 +65,7 @@
 		"numeric": "cpp",
 		"queue": "cpp",
 		"ratio": "cpp",
-		"thread": "cpp"
+		"thread": "cpp",
+		"stack": "cpp"
 	}
 }
