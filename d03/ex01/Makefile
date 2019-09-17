@@ -10,10 +10,10 @@ NAME =	ex01
 all: $(NAME)
 
 $(NAME) : $(OBJ)
-	clang++ -Werror -Wextra -Wall -o $(NAME) $(OBJ)
+	clang++ -Werror -Wextra -Wall -o $(NAME) $(OBJ) --std=c++98
 
 %.o:%.cpp 
-	clang++ -Werror -Wextra -Wall -c $< -o $@
+	clang++ -Werror -Wextra -Wall -c $< -o $@ --std=c++98
 
 clean:
 	rm -f $(OBJ)

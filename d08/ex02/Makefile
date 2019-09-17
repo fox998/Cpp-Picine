@@ -1,7 +1,7 @@
 
 all:
 	#-Werror -Wextra -Wall
-	clang++  *.cpp --std=c++11
+	clang++  *.cpp -Werror -Wextra -Wall --std=c++98
 
 fclean:
 	rm -f a.out

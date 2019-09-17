@@ -6,12 +6,12 @@
 class Zombie
 {
 	private:
-		std::string		_type;
-		std::string		_name;
+		std::string const	m_type;
+		std::string const	m_name;
 
 	public:
-		void		announce();
-		Zombie(std::string type, std::string name);
+		void		announce() const;
+		Zombie(std::string const& type, std::string const& name);
 };
 
 #endif

@@ -4,10 +4,12 @@
 
 void	Zombie::announce() const
 {
-	std::cout << "<" << this->_name << " (" << this->_type << ")>";
+	std::cout << "<" << this->m_name << " (" << this->m_type << ")>";
 	std::cout << " Braiiiiiiinnnssss..." << std::endl;
 }
 
-Zombie::Zombie(std::string type, std::string name): _type(type), _name(name)
+Zombie::Zombie(std::string const& type, std::string const& name)
+	: m_type(type)
+	, m_name(name)
 {
 }
