@@ -13,9 +13,12 @@ class       Span
         std::vector<int> GetSpans() const;
 
     public:
-        Span() {};
-        ~Span() {};
-        Span(unsigned int n);
+        ~Span();
+
+        Span(Span const& other);
+        Span(unsigned int n = 0);
+
+        Span& operator=(Span const& other);
 
 
         void        addNumber(int val);

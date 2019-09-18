@@ -6,6 +6,23 @@
 #include <functional>
 
 
+Span::~Span(){}
+
+
+Span::Span(Span const& other)
+    : m_Arr(other.m_Arr)
+    , m_MaxSize(other.m_MaxSize)
+{}
+
+Span& Span::operator=(Span const& other)
+{
+    m_Arr = other.m_Arr;
+    m_MaxSize = other.m_MaxSize;
+
+    return *this;
+}
+
+
 struct SpanWithPreviouse
 {
     int previouse;
