@@ -13,3 +13,12 @@ Zombie::Zombie(std::string const& type, std::string const& name)
 	, m_name(name)
 {
 }
+
+void Zombie::SetName(std::string const& name)
+{
+	m_name = name;
+}
+void Zombie::SetType(std::string const& type)
+{
+	m_type = type;
+}

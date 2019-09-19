@@ -8,7 +8,7 @@
 int		main()
 {
 	srand(time(0));
-	ZombieHorde const horde(5);
+	ZombieHorde const horde(10);
 	
 	ZombieHorde horde2(5);
 	horde.announce();

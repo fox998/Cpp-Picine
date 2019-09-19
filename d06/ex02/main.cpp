@@ -6,7 +6,10 @@
 #include <functional>
 #include <time.h>
 
-class Base {};
+class Base {
+public:
+    virtual ~Base(){}
+};
 
 class A : public Base {};
 class B : public Base {};
@@ -46,12 +49,12 @@ Base* generate(void)
 template<typename T>
 bool is_type_of(Base* instance)
 {
-    return dynamic_cast<T*>(instance) != nullptr;
+    return dynamic_cast<T*>(instance) != NULL;
 }
 
 #define IS_TYPE(TYPE, INSTANCE_PTR) \
 {\
-    if (is_type_of<##TYPE>(INSTANCE_PTR)){\
+    if (is_type_of<TYPE>(INSTANCE_PTR)){\
         std::cout<< #TYPE << '\n';\
     }\
 }
@@ -74,4 +77,10 @@ int main()
 
     Base* b;
     b = generate(); 
+
+    if (b)
+    {
+        identify_from_pointer(b);
+        identify_from_reference(*b);
+    }
 }
