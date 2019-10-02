@@ -14,11 +14,18 @@
 
 Object::~Object(){}
 
-Object::Object(){}
+Object::Object(): f(1){}
 
 Object::Object(Object const & copy)
 {
 	*this = copy;
+}
+
+Object::Object(Point const & position, Point const & speed, int health): f(1)
+{
+	this->_position = position;
+	this->_speed = speed;
+	this->_health = health;
 }
 
 Object &			Object::operator=(Object const & o)
@@ -36,10 +43,37 @@ Point const &		Object::getPosition() const
 
 void				Object::setPosition(Point const & p)
 {
-	this->_position += p;
+	char c = this->_position.getChar();
+	this->_position = p;
+	this->_position.setChar(c);
 }
 
-Point &				Object::move()
+Point const &				Object::move()
 {
-	
+	this->_position += this->_speed;
+
+	return (this->_position);
+}
+
+
+Point const &				Object::move(Point const & p)
+{
+	this->_position += p;
+
+	return (this->_position);
+}
+
+int					Object::getHealth() const
+{
+	return (this->_health);
+}
+
+void				Object::setHealth(int health)
+{
+	this->_health = health;
+}
+
+void				Object::drow(int color)
+{
+	this->_position.drow(color);
 }

@@ -1,35 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Player.hpp                                         :+:      :+:    :+:   */
+/*   List.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: afokin <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/23 14:09:24 by afokin            #+#    #+#             */
-/*   Updated: 2018/06/23 14:09:25 by afokin           ###   ########.fr       */
+/*   Created: 2018/06/24 17:31:39 by afokin            #+#    #+#             */
+/*   Updated: 2018/06/24 17:31:42 by afokin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef		PLAYER_HPP
-# define	PLAYER_HPP
+#ifndef	LIST_HPP
+# define	LIST_HPP
 
-#include	"Ship.hpp"
+#include	"Object.hpp"
 
-class	Player : public Ship
+class	List
 {
+	struct	node
+	{
+		Object	*cont;
+		node	*next;
+
+	};
+
 	private:
-		int		_score;
+		node	*_root;
+		int		_size;
 
-		Player();
 	public:
-		virtual ~Player();
+		~List();
+		List();
+		List(List const & copy);
 
-		void	upScore();
-		int		getScore() const;
-		Player(Player const & copy);
-		Player(Point const & position, Point const & speed, int health);
+		List &		operator=(List const & l);
+		void *		operator[](int i);
 
-		Player &		operator=(Player const & p);
+		void		push(Object	*content);
+		void		erase(int index);
+		int			size();
 };
 
 #endif

@@ -18,16 +18,17 @@
 class	Bullet : public Object
 {
 	protected:
-		int		_damage;
 
 	public:
 
-		virtual ~Bullet();
+		~Bullet();
 		Bullet();
 		Bullet(Bullet const & copy);
+		Bullet(Point const & pos);
+		Bullet(Point const & pos , Point const & sped);
 
-		Bullet &		operator=(Bullet const & s);
-		virtual bool		collision(Object const & o);
+		Bullet &			operator=(Bullet const & s);
+		virtual bool		collision(Object & o);
 };
 
 #endif

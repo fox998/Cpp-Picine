@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include	<ncurses.h>
 #include	"Point.hpp"
 
 Point::~Point(){}
@@ -20,6 +21,8 @@ Point::Point(Point const & copy)
 {
 	*this = copy;
 }
+
+Point::Point(int x, int y): _x(x), _y(y), _c(' '){}
 
 Point::Point(int x, int y, char c)
 {
@@ -37,11 +40,17 @@ Point &			Point::operator=(Point const & p)
 	return (*this);
 }
 
+bool			Point::operator==(Point const & p)
+{
+	if ( this->_x == p._x && this->_y == p._y)
+		return true;
+	return false;
+}
+
 Point &			Point::operator+=(Point const & p)
 {
 	this->_x += p._x;
 	this->_y += p._y;
-	this->_c += p._c;
 
 	return (*this);
 }
@@ -72,4 +81,12 @@ void			Point::setY(int y)
 void			Point::setChar(char c)
 {
 	this->_c = c;
+}
+
+void			Point::drow(int color)
+{
+	attron(COLOR_PAIR(color));
+	refresh();
+	mvwprintw(stdscr, this->_y, this->_x, "%c", this->_c);
+	attroff(COLOR_PAIR(color));
 }

@@ -21,9 +21,11 @@ Ship::Ship(Ship const & copy)
 	*this = copy;
 }
 
-Bullet		Ship::doShot()
+Ship::Ship(Point const & position, Point const & speed, int health) : Object(position, speed, health) {}
+
+Bullet		Ship::doShot(Point const & speed)
 {
-	return (Bullet());
+	return (Bullet(this->_position, speed));
 }
 
 Ship &		Ship::operator=(Ship const & s)
@@ -35,13 +37,17 @@ Ship &		Ship::operator=(Ship const & s)
 	return (*this);
 }
 
-int					Ship::getHealth() const
+bool		Ship::collision(Object & o)
 {
-	return (this->_health);
-}
+	Point	p1(this->getPosition());
+	Point	p2(o.getPosition());
 
-bool		Ship::collision(Object const & o)
-{
+	if ( p1 == p2)
+	{
+		o.setHealth(0);
+		this->_health = 0;
+		return (true);;
+	}
 	return (false);
 }
 

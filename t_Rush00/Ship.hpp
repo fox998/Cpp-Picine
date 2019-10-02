@@ -19,18 +19,16 @@
 class	Ship : public Object
 {
 	protected:
-		int		_health;
-
-		virtual ~Ship();
 		Ship();
 		Ship(Ship const & copy);
+		Ship(Point const & position, Point const & speed, int health);
 
 	public:
-		Bullet				doShot();
+		virtual ~Ship();
+		Bullet				doShot(Point const & speed);
 
 		Ship &				operator=(Ship const & s);
-		int					getHealth() const;
-		virtual bool		collision(Object const & o);
+		virtual bool		collision(Object & o);
 
 };
 

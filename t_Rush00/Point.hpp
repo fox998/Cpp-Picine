@@ -24,10 +24,12 @@ class		Point
 		~Point();
 		Point();
 		Point(Point const & copy);
+		Point(int x, int y);
 		Point(int x, int y, char c);
 
 		Point &			operator=(Point const & p);
 		Point &			operator+=(Point const & p);
+		bool			operator==(Point const & p);
 
 		int				getX() const;
 		int				getY() const;
@@ -36,6 +38,8 @@ class		Point
 		void			setX(int x);
 		void			setY(int y);
 		void			setChar(char c);
+
+		void			drow(int color);
 };
 
 #endif
