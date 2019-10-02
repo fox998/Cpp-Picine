@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include	"ScavTrap.hpp"
+#include	<cstdlib>
 #include	<iostream>
 
 void		ScavTrap::_outputNameOfClass()

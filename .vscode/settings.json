@@ -66,6 +66,7 @@
 		"queue": "cpp",
 		"ratio": "cpp",
 		"thread": "cpp",
+<<<<<<< HEAD
 		"__bit_reference": "cpp",
 		"__config": "cpp",
 		"__debug": "cpp",
@@ -87,5 +88,9 @@
 		"stack": "cpp",
 		"__functional_03": "cpp",
 		"__functional_base_03": "cpp"
+=======
+		"stack": "cpp",
+		"random": "cpp"
+>>>>>>> 1457123d7cfa1a5cf6a4927a40d7bc8d79b96462
 	}
 }

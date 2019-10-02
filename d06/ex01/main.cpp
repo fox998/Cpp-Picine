@@ -19,7 +19,6 @@ struct Data
     std::string s2;
 };
 
-
 void * serialize( void )
 {
     void* arr = new A;

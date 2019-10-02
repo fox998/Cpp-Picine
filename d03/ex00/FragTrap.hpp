@@ -10,8 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	FRAGTRAP_HPP
-# define	FRAGTRAP_HPP
+#pragma once
 
 #include	<string>
 
@@ -42,5 +41,3 @@ class	FragTrap
 		void			beRepaired(unsigned int amount);
 		void			vaulthunter_dot_exe(std::string const & target);
 };
-
-#endif

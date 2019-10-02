@@ -11,7 +11,7 @@ class ZombieEvent
 
 	public:
 		void	setZombieType(std::string type);
-		Zombie*	newZombie(std::string name);
+		Zombie*	newZombie(std::string const& name) const;
 };
 
 #endif
