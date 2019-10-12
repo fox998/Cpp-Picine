@@ -1,5 +1,13 @@
 
-SRC =	CPU.cpp GraphicalMode.cpp IMonitorGeneralInformation.cpp network.cpp DateTime.cpp IMonitorDisplayConsole.cpp RAM.cpp main.cpp
+SRC =	CPU.cpp\
+		GraphicalMode.cpp\
+		IMonitorGeneralInformation.cpp \
+		network.cpp \
+		DateTime.cpp \
+		IMonitorDisplayConsole.cpp \
+		RAM.cpp \
+		IMonitorDisplay.cpp\
+		main.cpp
 
 OBJ =	$(SRC:.cpp=.o)
 
@@ -23,13 +31,15 @@ FRAMEWORKS	=	-F./frameworks \
 SDL_FRM = -framework SDL2 -F /Library/Frameworks/ ./SDL2_ttf/SDL2_ttf
 SDL_INC = -I /Library/Frameworks/SDL2.framework/Headers/ -I SDL_ttf/
 
+FLAGS = -Werror -Wextra -Wall --std=c++98
+
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	clang++ -Werror -Wextra -Wall $(FRAMEWORKS) -o $(NAME) $(OBJ) -lcurses
+	clang++ $(FLAGS) $(FRAMEWORKS) -o $(NAME) $(OBJ) -lcurses
 
 %.o: %.cpp $(INC)
-	clang++ -Werror -Wextra -Wall -c $< -o $@ $(INCLUDES)
+	clang++ $(FLAGS) -c $< -o $@ $(INCLUDES)
 
 clean:
 	rm -f $(OBJ)

@@ -14,8 +14,8 @@ public:
 	DateTime(DateTime const &src);
 	DateTime & operator=(DateTime const &src);
 
-	std::string		getDate() const;
-	std::string		getTime() const;
+	std::string const&		getDate() const;
+	std::string const&		getTime() const;
 
 	void            setData();
 	

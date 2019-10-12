@@ -17,9 +17,9 @@ public:
 	IMonitorGeneralInformation(IMonitorGeneralInformation const &src);
 	IMonitorGeneralInformation & operator=(IMonitorGeneralInformation const &src);
 
-	std::string		getHostname() const;
-	std::string		getUser() const;
-	std::string		getVersion() const;
+	std::string	const&	getHostname() const;
+	std::string	const&	getUser() const;
+	std::string	const&	getVersion() const;
 
 	void            setData();
 	

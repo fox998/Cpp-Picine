@@ -73,19 +73,23 @@ void                    IMonitorDisplayConsole::displayDateTime() // +
 
 void                    IMonitorDisplayConsole::displayCPU() // -
 {
-        wattron(_main, COLOR_PAIR(1));
-        wattron(_main, A_BOLD);
-        mvwprintw(_main,9,35, "CPU:");
-        wattroff(_main, COLOR_PAIR(1));
+    int line = 8;
+    
+    wattron(_main, COLOR_PAIR(1));
+    wattron(_main, A_BOLD);
+    mvwprintw(_main, ++line, 35, "CPU:");
+    wattroff(_main, COLOR_PAIR(1));
 
-        wmove(_main,10,2);
-        whline(_main, '-', size_arr);  
+    wmove(_main, ++line,2);
+    whline(_main, '-', size_arr);  
 
-        mvwprintw(_main,11,2, "CPU:                      ->    %s;", "Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz");
-        mvwprintw(_main,12,2, "CPU cores:                ->    %s;", "4");
-        mvwprintw(_main,13,2, "CPU processes:            ->    %d;", _CPU.getCPUTotal());
-        mvwprintw(_main,14,2, "CPU threads:              ->    %d;", _CPU.getCPUThreads());
-        mvwprintw(_main,15,2, "CPU usage:                ->    %.f%%;", _CPU.getCPUTRunning());
+    mvwprintw(_main, ++line, 2, "CPU:                      ->    %s;", "Intel(R) Core(TM) i5-7500 CPU @ 3.40GHz");
+    mvwprintw(_main, ++line, 2, "CPU cores:                ->    %s;", "4");
+    mvwprintw(_main, ++line, 2, "CPU processes:            ->    %d;", _CPU.getCPUTotal()); 
+    mvwprintw(_main, ++line, 2, "CPU threads:              ->    %d;", _CPU.getCPUThreads());
+    mvwprintw(_main, ++line, 2, "CPU usage sys:            ->    %.d%%;", _CPU.getCPUUsageSystem());
+    mvwprintw(_main, ++line, 2, "CPU usage user:           ->    %.d%%;", _CPU.getCPUUsageUser());
+    mvwprintw(_main, ++line, 2, "CPU usage idle:           ->    %.d%%;", _CPU.getCPUUsageIdle());
 }
 
 void                    IMonitorDisplayConsole::displayRAM() // +

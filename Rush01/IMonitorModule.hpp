@@ -1,5 +1,4 @@
-#ifndef     IMONITORMODULE_HPP
-# define    IMONITORMODULE_HPP
+#pragma once
 
 #include <iostream>
 #include <sstream>
@@ -12,4 +11,3 @@ class       IMonitorModule
         virtual void                    setData() = 0;
 };
 
-#endif

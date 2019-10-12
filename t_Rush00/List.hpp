@@ -38,7 +38,7 @@ class	List
 
 		void		push(Object	*content);
 		void		erase(int index);
-		int			size();
+		int			size() const;
 };
 
 #endif

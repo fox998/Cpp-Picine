@@ -1,7 +1,13 @@
-#ifndef     IMONITORDISPLAY_HPP
-# define    IMONITORDISPLAY_HPP
+#pragma once
 
 #include "IMonitorModule.hpp"
+#include <string>
+#include <array>
+
+namespace MonitorDisplayUtils
+{
+	std::string getFileData(char const* const file, char const* const flags );
+}
 
 class       IMonitorDisplay
 {
@@ -13,5 +19,3 @@ public:
 	virtual void                    displayNetwork() = 0;
     virtual void                    loop() = 0;
 };
-
-#endif

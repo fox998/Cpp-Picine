@@ -84,7 +84,7 @@ void			List::erase(int i)
 	del->cont->f = 0;
 }
 
-int				List::size()
+int				List::size() const
 {
 	return (_size);
 }

@@ -15,8 +15,8 @@ public:
 	Network(Network const &src);
 	Network & operator=(Network const &src);
 
-	std::string     getIn() const;
-	std::string     getOut() const;
+	std::string const&     getIn() const;
+	std::string const&     getOut() const;
 
 	void            setData();
 	

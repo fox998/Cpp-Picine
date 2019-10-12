@@ -16,6 +16,7 @@
 #include "Player.hpp"
 #include "Enemy.hpp"
 #include "List.hpp"
+#include <unistd.h>
 
 int					gl_x;
 int					gl_y;
@@ -36,11 +37,11 @@ void	drow_point(Point const &p, int color)
 
 void	draw_borders(WINDOW *screen)
 {
-	int		x, y, i;
+	int		x, y;
 
 	getmaxyx(screen, y, x);
 
-	for (i = 0; i < x; i++)
+	for (int i = 0; i < x; ++i)
 	{
 		mvwprintw(screen, 0, i, "-");
 		mvwprintw(screen, y - 1, i, "-");
@@ -113,6 +114,7 @@ void	init_win()
 	curs_set(0);
 	start_color();
 	keypad(stdscr, true);
+
 	init_pair(1, COLOR_BLACK, COLOR_BLACK);
 	init_pair(2, COLOR_YELLOW, COLOR_BLACK);
 	init_pair(3, COLOR_BLUE, COLOR_BLACK);
@@ -125,25 +127,53 @@ void	init_star(Bullet *bul)
 {
 	for (int i = 0; i < 100; ++i)
 	{
+		// TODO: duplication of std::rand() % (gl_y - 5) + 1
 		bul[i] = Bullet(Point(std::rand() % (gl_x - 1), std::rand() % (gl_y - 5) + 1, '.'));
 	}
 }
 
 void		drow_stars(int i, Bullet *bul, Point &p, Point &pStart)
 {
-	if (i % 20 == 0)
+	// TODO: Why 20? 
+	if (i % 20 != 0)
 	{
-		for (int n = 0; n < 100; ++n)
-		{
-			drow_point(bul[n].getPosition(), 1);
-			if (bul[n].getPosition().getX() == 0)
+		return;
+	}
+
+	for (int n = 0; n < 100; ++n)
+	{
+		Bullet& bullet = bul[n];
+		Point const& bulletPosition = bullet.getPosition();
+		
+		drow_point(bulletPosition, 1);
+		if (bulletPosition.getX() == 0)
 		{
 			pStart.setX(gl_x);
+			// TODO: Why (gl_y - 5) + 1?
 			pStart.setY(std::rand() % (gl_y - 5) + 1);
-			bul[n].setPosition(pStart);
+			bullet.setPosition(pStart);
 		}
-			bul[n].move(p);
-			drow_point(bul[n].getPosition(), 6);
+		
+		bullet.move(p);
+		// Don't use bulletPosition because
+		// position of  was bullet chenget after bullet.setPosition(pStart)
+		// TODO: Why 6?
+		drow_point(bullet.getPosition(), 6);
+	}
+}
+
+
+void drow_objects(List& objects, int color)
+{
+	for (int i = 0; i < objects.size(); i++)
+	{
+		Object* const object = static_cast<Object*>(objects[i]);
+		// TODO: f?????? WTF?!
+		if (object->f)
+		{
+			drow_point(object->getPosition(), 1);
+			object->move();
+			drow_point(object->getPosition(), color);
 		}
 	}
 }
@@ -152,39 +182,53 @@ void		drow_enemy(int i)
 {
 	static int		a = 5;
 
-
+	// WTF?
 	if (i % 100 == 0 && a > 1)
-		a--;
-
-	if (i % 5 == 0)
 	{
-		if (std::rand() % a == 0)
-				e.push(new Enemy(Point(gl_x, std::rand() % (gl_y - 5) + 1, '#'), Point(-1, 0), 15));
-			for (int i = 0; i < (int)e.size(); i++)
-			{
-				if (((Enemy *)e[i])->f)
-				{
-					drow_point(((Enemy *)e[i])->getPosition(), 1);
-					((Enemy *)e[i])->move();
-					drow_point(((Enemy *)e[i])->getPosition(), 4);
-				}
-			}
+		a--;
+	}
+
+	if (i % 5 != 0 || std::rand() % a == 0)
+	{
+		return;
+	}
+	
+	// TODO: duplication of std::rand() % (gl_y - 5) + 1
+	// TODO: Why 15?
+	e.push(new Enemy(Point(gl_x, std::rand() % (gl_y - 5) + 1, '#'), Point(-1, 0), 15));
+	for (int i = 0; i < e.size(); i++)
+	{
+		Enemy* const enemy = static_cast<Enemy*>(e[i]);
+		// TODO: f?????? WTF?!
+		if (enemy->f)
+		{
+			drow_point(enemy->getPosition(), 1);
+			enemy->move();
+			// TODO: 4?
+			drow_point(enemy->getPosition(), 4);
 		}
+	}
 }
+
 
 void		drow_bullet(int i)
 {
+	if (i % 5 != 0)
+	{
+		return;
+	}
 
-	if (i % 5 == 0)
-		for (int n = 0; n < (int)b.size(); n++)
+	for (int n = 0; n < b.size(); n++)
+	{
+		Bullet* const bullet = static_cast<Bullet *>(b[n]);
+		if (bullet->f)
 		{
-			if (((Bullet *)b[n])->f)
-			{
-				drow_point(((Bullet *)b[n])->getPosition(), 1);
-				((Bullet *)b[n])->move();
-				drow_point(((Bullet *)b[n])->getPosition(), 2); // пули
-			}
+			drow_point(bullet->getPosition(), 1);
+			bullet->move();
+			// TODO: Why 2?
+			drow_point(bullet->getPosition(), 2); // пули
 		}
+	}
 }
 int		check_collision(Player &user)
 {
@@ -211,8 +255,6 @@ int		check_collision(Player &user)
 			}
 	return (1);
 }
-
-#include	<unistd.h>
 
 int main()
 {

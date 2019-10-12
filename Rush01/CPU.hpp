@@ -23,8 +23,8 @@ public:
 	CPU(CPU const &src);
 	CPU & operator=(CPU const &src);
 
-	std::string     getCPUCoresQuantity()  const;
-	std::string     getCPUGeneral()  const;
+	std::string const&     getCPUCoresQuantity()  const;
+	std::string const&     getCPUGeneral()  const;
 	int             getCPUTotal()  const;
 	int             getCPUThreads() const;
 	double          getCPUTRunning() const;
